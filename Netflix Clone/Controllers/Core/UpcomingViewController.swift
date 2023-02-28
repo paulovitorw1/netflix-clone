@@ -28,10 +28,12 @@ class UpcomingViewController: UIViewController {
         
         fetchUpcoming()
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         upcomingTable.frame = view.bounds
     }
+    
     private func setupNavigationBar() {
         title = "Upcoming"
         navigationController?.navigationBar.prefersLargeTitles = true
