@@ -17,6 +17,9 @@ enum Sections: Int {
 
 class HomeViewController: UIViewController {
     
+    private var randomTrendingMovie: Title?
+    private var headerView: HeroHeaderView?
+    
     let sectionTitles: [String] = ["Trending Movies", "Trending Tv", "Popular",  "Upcoming Movies", "Top rated"]
     
     private let homeFeedTable: UITableView = {
@@ -28,24 +31,28 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        buildHierachy()
         configureNavBar()
+        buildHierachy()
         configurationTableView()
-        
+        configureHeroHeaderView()
     }
     
-    private func buildHierachy() {
-        view.addSubview(homeFeedTable)
+    private func configureHeroHeaderView() {
+
+        APICaller.shared.getTrendingMovies { [weak self] result in
+            switch result {
+            case .success(let titles):
+                let selectedTitle = titles.randomElement()
+                
+                self?.randomTrendingMovie = selectedTitle
+                self?.headerView?.configure(with: TitleViewModel(titleName: selectedTitle?.original_title ?? "", posterURL: selectedTitle?.poster_path ?? ""))
+                
+            case .failure(let erorr):
+                print(erorr.localizedDescription)
+            }
+        }
     }
-    
-    private func configurationTableView() {
-        homeFeedTable.delegate = self
-        homeFeedTable.dataSource = self
-        
-        let headerView = HeroHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 500))
-        homeFeedTable.tableHeaderView = headerView
-    }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         homeFeedTable.frame = view.bounds
@@ -62,6 +69,18 @@ class HomeViewController: UIViewController {
         ]
         
         navigationController?.navigationBar.tintColor = .white
+    }
+    
+    private func buildHierachy() {
+        view.addSubview(homeFeedTable)
+    }
+    
+    private func configurationTableView() {
+        homeFeedTable.delegate = self
+        homeFeedTable.dataSource = self
+        
+        headerView = HeroHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 500))
+        homeFeedTable.tableHeaderView = headerView
     }
 }
 
