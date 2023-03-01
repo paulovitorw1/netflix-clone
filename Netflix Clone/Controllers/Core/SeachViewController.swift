@@ -92,7 +92,7 @@ extension SeachViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension SeachViewController: UISearchResultsUpdating {
+extension SeachViewController: UISearchResultsUpdating, SeachResultsViewControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         
@@ -102,6 +102,8 @@ extension SeachViewController: UISearchResultsUpdating {
               let resultsController = searchController.searchResultsController as? SeachResultsViewController else {
             return
         }
+        
+        resultsController.delegate = self
         
         APICaller.shared.search(with: query) { result in
             DispatchQueue.main.sync {
@@ -113,6 +115,14 @@ extension SeachViewController: UISearchResultsUpdating {
                     print(error.localizedDescription)
                 }
             }
+        }
+    }
+    
+    func searchResultsViewControllerDidTapItem(_ viewModel: TitlePreviewViewModel) {
+        DispatchQueue.main.sync { [weak self] in
+            let controller = TitlePreviewViewController()
+            controller.configure(with: viewModel)
+            self?.navigationController?.pushViewController(controller, animated: true)
         }
     }
 }
