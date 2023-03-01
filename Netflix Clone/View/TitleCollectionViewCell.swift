@@ -33,10 +33,10 @@ class TitleCollectionViewCell: UICollectionViewCell {
     }
     
     private func stupUI() {
-        buildHierachy()
+        buildHierarchy()
     }
     
-    private func buildHierachy() {
+    private func buildHierarchy() {
         contentView.addSubview(posterImageView)
     }
     

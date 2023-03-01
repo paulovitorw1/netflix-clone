@@ -31,7 +31,7 @@ class CollectionViewTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .systemRed
         
-        buildHierachy()
+        buildHierarchy()
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -46,7 +46,7 @@ class CollectionViewTableViewCell: UITableViewCell {
         collectionView.frame = contentView.bounds
     }
     
-    private func buildHierachy() {
+    private func buildHierarchy() {
         contentView.addSubview(collectionView)
 
     }
@@ -58,8 +58,16 @@ class CollectionViewTableViewCell: UITableViewCell {
         }
     }
     
+    
     private func downloadTitleAt(indexPath: IndexPath) {
-        print("Downloading \(titles[indexPath.row].original_title)")
+        DataPersistenceManager.shared.downloadTitleWith(model: titles[indexPath.row]) { result in
+            switch result {
+            case .success():
+                NotificationCenter.default.post(name: NSNotification.Name("Downloaded"), object: nil)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 

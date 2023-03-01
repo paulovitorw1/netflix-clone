@@ -51,11 +51,11 @@ class TitlePreviewViewController: UIViewController {
     }
     
     private func setupUI() {
-        buildHierachy()
+        buildHierarchy()
         applyConstraints()
     }
     
-    private func buildHierachy() {
+    private func buildHierarchy() {
         view.addSubview(webView)
         view.addSubview(titleLabel)
         view.addSubview(overviewLabel)

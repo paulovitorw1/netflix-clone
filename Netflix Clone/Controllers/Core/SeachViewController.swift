@@ -28,7 +28,7 @@ class SeachViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupNavigationBar()
-        buildHierachy()
+        buildHierarchy()
         disciverTable.delegate = self
         disciverTable.dataSource = self
         
@@ -51,7 +51,7 @@ class SeachViewController: UIViewController {
         navigationItem.searchController = searchController
     }
     
-    private func buildHierachy() {
+    private func buildHierarchy() {
         view.addSubview(disciverTable)
     }
     

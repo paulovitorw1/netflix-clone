@@ -61,11 +61,11 @@ final class HeroHeaderView: UIView {
     }
     
     private func stupUI() {
-        buildHierachy()
+        buildHierarchy()
         applyConstraints()
     }
     
-    private func buildHierachy() {
+    private func buildHierarchy() {
         addSubview(heroImageView)
         addGradient()
         addSubview(playButton)

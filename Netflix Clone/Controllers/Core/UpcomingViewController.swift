@@ -21,7 +21,7 @@ class UpcomingViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupNavigationBar()
-        buildHierachy()
+        buildHierarchy()
         
         upcomingTable.delegate = self
         upcomingTable.dataSource = self
@@ -41,7 +41,7 @@ class UpcomingViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .white
     }
     
-    private func buildHierachy() {
+    private func buildHierarchy() {
         view.addSubview(upcomingTable)
     }
     

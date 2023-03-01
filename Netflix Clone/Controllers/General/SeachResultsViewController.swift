@@ -30,7 +30,7 @@ class SeachResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        buildHierachy()
+        buildHierarchy()
         searchResultsCollectionView.delegate = self
         searchResultsCollectionView.dataSource = self
     }
@@ -40,7 +40,7 @@ class SeachResultsViewController: UIViewController {
         searchResultsCollectionView.frame = view.bounds
     }
     
-    private func buildHierachy() {
+    private func buildHierarchy() {
         view.addSubview(searchResultsCollectionView)
     }
 
