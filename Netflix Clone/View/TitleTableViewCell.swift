@@ -46,12 +46,12 @@ class TitleTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
-        buildHierachy()
+        buildHierarchy()
         applyConstraints()
         
     }
     
-    private func buildHierachy() {
+    private func buildHierarchy() {
         contentView.addSubview(titlePosterImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(playTitleButton)

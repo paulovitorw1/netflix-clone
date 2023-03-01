@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configureNavBar()
-        buildHierachy()
+        buildHierarchy()
         configurationTableView()
         configureHeroHeaderView()
     }
@@ -71,7 +71,7 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .white
     }
     
-    private func buildHierachy() {
+    private func buildHierarchy() {
         view.addSubview(homeFeedTable)
     }
     
