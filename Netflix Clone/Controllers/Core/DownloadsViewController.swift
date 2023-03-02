@@ -36,7 +36,7 @@ class DownloadsViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        title = "Search"
+        title = "Download"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.tintColor = .white
