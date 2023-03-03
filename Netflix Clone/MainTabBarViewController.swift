@@ -29,7 +29,7 @@ class MainTabBarViewController: UITabBarController {
 
         homeController.title = "Home"
         upcomingController.title = "Upcoming"
-        searchController.title = "Top Search"
+        searchController.title = "Search"
         downloadController.title = "Downloads"
         
         tabBar.tintColor = .label
